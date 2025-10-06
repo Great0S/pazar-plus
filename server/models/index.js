@@ -17,6 +17,15 @@ const TurkishCompliance = require("./TurkishCompliance");
 const ComplianceDocuments = require("./ComplianceDocuments");
 const Settings = require("./Settings");
 
+// === SPARE PARTS MODELS ===
+const Vehicle = require("./Vehicle");
+const Supplier = require("./Supplier");
+const PartCompatibility = require("./PartCompatibility");
+const SupplierPrice = require("./SupplierPrice");
+const AIChatLog = require("./AIChatLog");
+const Cart = require("./Cart");
+const CartItem = require("./CartItem");
+
 // === PLATFORM-SPECIFIC PRODUCT MODELS ===
 const TrendyolProduct = require("./TrendyolProduct");
 const HepsiburadaProduct = require("./HepsiburadaProduct");
@@ -76,6 +85,15 @@ const models = {
   TurkishCompliance: TurkishCompliance,
   ComplianceDocuments: ComplianceDocuments,
   Settings: Settings,
+
+  // === SPARE PARTS MODELS ===
+  Vehicle: Vehicle,
+  Supplier: Supplier,
+  PartCompatibility: PartCompatibility,
+  SupplierPrice: SupplierPrice,
+  AIChatLog: AIChatLog,
+  Cart: Cart,
+  CartItem: CartItem,
 
   // === PLATFORM-SPECIFIC PRODUCT MODELS ===
   TrendyolProduct: TrendyolProduct,
@@ -824,6 +842,26 @@ models.CustomerReply.belongsTo(models.ReplyTemplate, {
 // with MainProduct, PlatformVariant, and EnhancedProductMedia models.
 // This is SEPARATE from the legacy Product/ProductVariant system above.
 // ========================================
+
+// === SPARE PARTS ASSOCIATIONS ===
+if (models.Vehicle.associate) {
+  models.Vehicle.associate(models);
+}
+if (models.Supplier.associate) {
+  models.Supplier.associate(models);
+}
+if (models.SupplierPrice.associate) {
+  models.SupplierPrice.associate(models);
+}
+if (models.AIChatLog.associate) {
+  models.AIChatLog.associate(models);
+}
+if (models.Cart.associate) {
+  models.Cart.associate(models);
+}
+if (models.CartItem.associate) {
+  models.CartItem.associate(models);
+}
 
 if (models.MainProduct.associate) {
   models.MainProduct.associate(models);
